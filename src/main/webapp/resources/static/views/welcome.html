@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="en" ng-app="App" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" ng-app="App" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" ng-app="App" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en" ng-app="App" class="no-js"> <!--<![endif]-->
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Welcome</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://code.angularjs.org/1.2.16/angular.js"></script>
+    <link rel="stylesheet" href="../resources/static/css/app.css">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
+    <title>Home</title>
+</head>
+<body ng-app="App">
+<div ng-controller="CrudCtrl">
+    <style type="text/css">
+        table{
+            border:1px solid #333;
+            border-collapse:collapse;
+            width:100% !important;
+        }
+        table tr td{
+            border:1px solid #333;
+            padding:10px;
+        }
+        table tr td span{
+            cursor:pointer;
+        }
+    </style>
+    <table class="table">
+        <thead class="thead-dark">
+        <tr style="background-color: #00aaff; text-align: center;">
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellido</th>
+            <th scope="col">Estado Civil</th>
+            <th scope="col">Fecha nacimiento</th>
+            <th scope="col">Sueldo</th>
+            <th scope="col">Correo</th>
+            <th scope="col">Departamento</th>
+            <th scope="col">Ciudad</th>
+            <th scope="col"><button type="button" class="btn btn-success" ng-click="add()">Agregar</button></th>
+        </tr>
+        </thead>
+        <tbody style="background-color: #e3e3e3;">
+        <tr ng-repeat="profile in Profiles">
+            <td>
+                <input type="text" class="form-control" ng-model="profile.Nombre" ng-show="profile.editable">
+                <span ng-hide="profile.editable">{{ profile.Nombre }}</span>
+            </td>
+            <td>
+                <input type="text" class="form-control" ng-model="profile.Apellido" ng-show="profile.editable">
+                <span ng-hide="profile.editable">{{ profile.Apellido }}</span>
+            </td>
+            <td>
+                <span ng-hide="profile.editable">{{ profile.Estado }}</span>
+                <select class="form-control" ng-model="profile.Estado" ng-show="profile.editable">
+                    <option>Soltero</option>
+                    <option>Casado</option>
+                    <option>Viudo</option>
+                    <option>Union libre</option>
+                </select>
+            </td>
+            <td>
+                <input type="text" class="form-control" ng-model="profile.Fecha" ng-show="profile.editable">
+                <span ng-hide="profile.editable">{{ profile.Fecha }}</span>
+            </td>
+            <td>
+                <input type="text" class="form-control" ng-model="profile.Sueldo" ng-show="profile.editable">
+                <span ng-hide="profile.editable">{{ profile.Sueldo }}</span>
+            </td>
+            <td>
+                <input type="email" class="form-control" ng-model="profile.Correo" ng-show="profile.editable">
+                <span ng-hide="profile.editable">{{ profile.Correo }}</span>
+            </td>
+            <td>
+                <input type="text" class="form-control" ng-model="profile.Departamento" ng-show="profile.editable">
+                <span ng-hide="profile.editable">{{ profile.Departamento }}</span>
+            </td>
+            <td>
+                <input type="text" class="form-control" ng-model="profile.Ciudad" ng-show="profile.editable">
+                <span ng-hide="profile.editable">{{ profile.Ciudad }}</span>
+            </td>
+            <td>
+                <button type="button" class="btn btn-primary" ng-click="edit($index)" ng-hide="profile.editable">Editar</button>
+                <button type="button" class="btn btn-primary" ng-click="save($index)" ng-show="profile.editable">Guardar</button>
+                <button type="button" class="btn btn-danger" ng-click="delete($index)">Eliminar</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.16/angular.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.19/i18n/angular-locale_es-es.js"></script>
+<script src="../resources/static/views/app.js"></script>
+
+</body>
+</html>
